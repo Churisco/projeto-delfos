@@ -1,0 +1,91 @@
+﻿/* tailwindcss */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body.theme-light { @apply bg-slate-50 text-gray-800; }
+  body.theme-dark { @apply bg-black text-gray-100; }
+  body.theme-classic { @apply bg-classic-background text-classic-text; }
+  body { @apply transition-colors duration-300 font-sans; }
+  :focus:not(:focus-visible) { outline: none; }
+  
+  /* Garantir que a fonte Cinzel seja carregada corretamente */
+  .font-cinzel {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  
+  /* Forçar cores dos temas com CSS puro */
+  body.theme-light {
+    background-color: #f8fafc !important;
+    color: #1f2937 !important;
+  }
+  
+  body.theme-dark {
+    background-color: #000000 !important;
+    color: #f9fafb !important;
+  }
+  
+  body.theme-classic {
+    background-color: #051d3b !important;
+    color: #f5cf0d !important;
+  }
+  
+  /* Forçar cores dos temas */
+  .theme-dark .intro-bg { background-color: #000000 !important; }
+  .theme-classic .intro-bg { background-color: #051d3b !important; }
+  .theme-dark .intro-title { color: #f3f4f6 !important; }
+  .theme-classic .intro-title { color: #f5cf0d !important; }
+}
+
+/* stylelint-disable */
+@layer components {
+  /* Theme utility aliases (from static prototype) */
+  .theme-light .text-primary { @apply text-gray-800; }
+  .theme-light .text-secondary { @apply text-gray-600; }
+  .theme-dark .text-primary { @apply text-gray-100; }
+  .theme-dark .text-secondary { @apply text-gray-400; }
+  .theme-classic .text-primary { @apply text-classic-text; }
+  .theme-classic .text-secondary { @apply text-classic-secondary; }
+
+  .theme-light .bg-card { @apply bg-white; }
+  .theme-dark .bg-card { @apply bg-[#1d2024]; }
+  .theme-classic .bg-card { @apply bg-classic-card-bg; }
+
+  .theme-light .border-card { @apply border-gray-200; }
+  .theme-dark .border-card { @apply border-gray-700; }
+  .theme-classic .border-card { @apply border-classic-card-border; }
+
+  .course-suggestion-card { @apply p-4 rounded-lg transition-transform duration-200; }
+  .course-suggestion-card:hover { @apply -translate-y-0.5; }
+  .theme-light .course-suggestion-card { @apply bg-blue-50 border border-blue-200; }
+  .theme-dark .course-suggestion-card { @apply bg-slate-800 border border-blue-500; }
+  .theme-classic .course-suggestion-card { @apply bg-classic-card-bg border border-classic-card-border; }
+
+  .button { @apply py-3 px-6 rounded-lg font-semibold transition-all duration-200 ease-in-out cursor-pointer text-center disabled:cursor-not-allowed; }
+  .button-primary { @apply bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-400; }
+  .dark .button-primary { @apply bg-blue-400 text-gray-900 hover:bg-blue-500 disabled:bg-gray-600 disabled:text-gray-400; }
+  .theme-classic .button-primary { @apply bg-classic-button-bg text-classic-button-text hover:opacity-90 disabled:bg-opacity-50 disabled:text-opacity-70; }
+  .button-secondary { @apply bg-gray-200 text-gray-800 hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400; }
+  .dark .button-secondary { @apply bg-gray-700 text-gray-100 hover:bg-gray-600 disabled:bg-gray-800 disabled:text-gray-500; }
+  .theme-classic .button-secondary { @apply bg-transparent text-classic-text border border-classic-text hover:bg-white/10 disabled:opacity-50; }
+  .card { @apply p-6 rounded-lg shadow border animate-fadeIn; }
+  .theme-light .card { @apply bg-white border-gray-200; }
+  .theme-dark .card { @apply bg-[#1d2024] border-gray-700; }
+  .theme-classic .card { @apply bg-classic-card-bg border-classic-card-border; }
+  .radio-option-label { @apply block py-3 px-5 border rounded-md cursor-pointer transition-all duration-200 text-center; }
+  .radio-option-input { @apply hidden; }
+  .radio-option-input:focus-visible + .radio-option-label { @apply ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-gray-900; }
+  .theme-light .radio-option-label { @apply border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300; }
+  .theme-light .radio-option-input:checked + .radio-option-label { @apply bg-blue-500 border-blue-600 text-white font-medium; }
+  .theme-dark .radio-option-label { @apply border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-blue-400; }
+  .theme-dark .radio-option-input:checked + .radio-option-label { @apply bg-blue-400 border-blue-500 text-gray-900 font-medium; }
+  /* Fix: use existing custom color key card-border instead of non-existent classic-border */
+  .theme-classic .radio-option-label { @apply text-gray-200 hover:bg-white/10; border:1px solid #f5cf0d; }
+  .theme-classic .radio-option-input:checked + .radio-option-label { @apply bg-classic-button-bg border-opacity-90 text-classic-button-text font-medium; }
+}
+/* stylelint-enable */
+
+/* full-screen smoke uses GIF; no extra keyframes needed */

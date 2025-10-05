@@ -1,0 +1,33 @@
+{
+  "name": "projeto-delfos",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18 <22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "derive:onet": "node scripts/deriveOnet.js",
+    "img:remove-bg": "node scripts/removeBackground.js"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "latest",
+    "sharp": "^0.33.5"
+  }
+}
