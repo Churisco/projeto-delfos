@@ -52,12 +52,14 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden -mb-8 
-                    bg-white intro-bg transition-colors duration-300">
+                    bg-white intro-bg transition-colors duration-300 px-4 sm:px-6 lg:px-8 lenovo:px-12">
       {/* Templo com a mesma arte original, mas PNG com fundo transparente */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center p-4 lenovo:p-6">
         <div
           ref={containerRef}
-          className="relative w-full max-w-6xl aspect-[4/3]"
+          className="relative w-full max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-6xl 
+                     lenovo:max-w-6xl 3xl:max-w-7xl
+                     aspect-[4/3] sm:aspect-[5/3] md:aspect-[4/3] lenovo:aspect-[4/3]"
           onClick={(e) => {
             // Fallback: if user clicks near the door area, trigger transition
             const el = containerRef.current;
@@ -117,7 +119,9 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
               "--tw-translate-y": "calc(-50% + 1px)",
             } as React.CSSProperties}
             className={`absolute transform -translate-x-1/2 -translate-y-1/2 
-                     w-[2.75rem] h-[6.75rem] sm:w-[3.75rem] sm:h-[7.5rem] md:w-[4.75rem] md:h-[8.75rem]
+                     w-6 h-12 xs:w-8 xs:h-16 sm:w-[2.75rem] sm:h-[6.75rem] 
+                     md:w-[3.75rem] md:h-[7.5rem] lg:w-[4.75rem] lg:h-[8.75rem]
+                     lenovo:w-[4.75rem] lenovo:h-[8.75rem] 3xl:w-[5rem] 3xl:h-[9rem]
                      bg-black hover:bg-black 
                      transition-all duration-300 hover:scale-105 
                      rounded-sm border-2 ${useDebugImage ? "border-yellow-400" : "border-transparent"}
@@ -137,15 +141,15 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
               className="absolute z-40"
               style={{
                 top: `calc(${doorTop}% - 18px)`,
-                left: `calc(${doorLeft}% + 80px)`,
+                left: `calc(${doorLeft}% + 50px)`,
                 transform: "translateY(-50%)",
               }}
             >
-              <div className="relative bg-black/90 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+              <div className="relative bg-black/90 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow-lg max-w-[200px] sm:max-w-none">
                 {/* Botão X interno no canto superior direito */}
                 <button
                   onClick={() => setShowTooltip(false)}
-                  className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-black/70 text-white/90 hover:text-white flex items-center justify-center text-xs font-bold shadow"
+                  className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black/70 text-white/90 hover:text-white flex items-center justify-center text-xs font-bold shadow"
                   aria-label={language === 'en' ? 'Close tip' : 'Fechar dica'}
                 >
                   ×
@@ -158,14 +162,17 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
       </div>
 
       {/* Título no topo */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 px-4">
-        <h1 className="text-2xl sm:text-4xl md:text-6xl font-cinzel text-center text-gray-800 intro-title transition-colors duration-300">
+      <div className="absolute top-4 sm:top-8 lenovo:top-10 left-1/2 transform -translate-x-1/2 z-10 px-4 w-full">
+        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+                       lenovo:text-6xl 3xl:text-7xl
+                       font-cinzel text-center text-gray-800 intro-title transition-colors duration-300
+                       leading-tight">
           {language === 'en' ? 'Delphic Project' : 'PROJETO DELFOS'}
         </h1>
       </div>
 
       {/* Ícone de configurações - posição ajustada (mais acima) */}
-      <div className="absolute top-4 right-8 md:top-8 md:right-12 z-10">
+      <div className="absolute top-2 right-4 sm:top-4 sm:right-6 md:top-8 md:right-12 lenovo:top-12 lenovo:right-14 z-10">
         <ConfigButton />
       </div>
     </div>

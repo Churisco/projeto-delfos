@@ -9,6 +9,13 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',  // Breakpoint para celulares maiores
+        '2xl': '1400px', // Para telas muito grandes
+        '3xl': '2400px', // Para telas ultra-wide como Lenovo 2560x1600
+        'lenovo': '2560px', // Breakpoint específico para o Lenovo de desenvolvimento
+        'short': { 'raw': '(max-height: 600px)' }, // Para devices de altura baixa (landscape mode)
+      },
       fontFamily: {
         'cinzel': ['var(--font-cinzel)', 'serif'],
         'sans': ['var(--font-inter)', 'sans-serif'],
@@ -24,6 +31,11 @@ const config: Config = {
             "button-bg": "#f5cf0d",
             "button-text": "#051d3b"
         }
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
       },
       keyframes: {
         fadeIn: {
