@@ -91,6 +91,24 @@
   .theme-classic .prose em {
     color: #f9fafb !important;
   }
+  
+  /* Forçar estilos do modal Info no tema clássico */
+  body.theme-classic [data-modal="info"] h2,
+  body.theme-classic [data-modal="info"] h3,
+  body.theme-classic [data-modal="info"] h4,
+  body.theme-classic [data-modal="info"] h5 {
+    color: #ffffff !important;
+  }
+  
+  body.theme-classic [data-modal="info"] p,
+  body.theme-classic [data-modal="info"] li,
+  body.theme-classic [data-modal="info"] span {
+    color: #f3f4f6 !important;
+  }
+  
+  body.theme-classic [data-modal="info"] strong {
+    color: #ffffff !important;
+  }
 
   .course-suggestion-card { @apply p-3 sm:p-4 rounded-lg transition-transform duration-200; }
   .course-suggestion-card:hover { @apply -translate-y-0.5; }

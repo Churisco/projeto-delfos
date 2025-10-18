@@ -11,12 +11,19 @@ interface InfoModalProps {
 type TabType = "project" | "data" | "percentages" | "aptitudes";
 
 export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
-  const { language } = useTheme();
+  const { language, theme } = useTheme();
   const [activeTab, setActiveTab] = useState<TabType>("project");
   const professions = getProfessionsByLang(language);
   const aptitudes = getAptitudesByLang(language);
 
   if (!isOpen) return null;
+
+  // Função para obter cores baseadas no tema
+  const getTextColor = (type: 'primary' | 'secondary') => {
+    if (theme === 'classic') return type === 'primary' ? '#ffffff' : '#f3f4f6';
+    if (theme === 'dark') return type === 'primary' ? '#f9fafb' : '#d1d5db';
+    return type === 'primary' ? '#1f2937' : '#6b7280';
+  };
 
   const tabs = [
     {
@@ -60,12 +67,12 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
           <div className="space-y-6">
             <div className="text-center mb-8">
               <div className="text-6xl mb-4">🏛️</div>
-              <h3 className="text-2xl font-bold text-primary mb-2">
+              <h3 className="text-2xl font-bold mb-2" style={{ color: getTextColor('primary') }}>
                 {language === 'en' ? 'The Oracle of Delphi' : 'O Oráculo de Delfos'}
               </h3>
             </div>
             
-            <div className="prose prose-sm max-w-none text-secondary leading-relaxed space-y-4">
+            <div className="prose prose-sm max-w-none leading-relaxed space-y-4" style={{ color: getTextColor('secondary') }}>
               {language === 'en' ? (
                 <>
                   <p>
@@ -433,9 +440,25 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white dark:bg-gray-900 w-full max-w-6xl max-h-[90vh] rounded-lg shadow-2xl overflow-hidden theme-classic:!bg-[#041428]">
+      <div 
+        data-modal="info"
+        className="w-full max-w-6xl max-h-[90vh] rounded-lg shadow-2xl overflow-hidden"
+        style={{
+          backgroundColor: theme === 'classic' ? '#041428' : theme === 'dark' ? '#111827' : '#ffffff'
+        }}
+      >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 theme-classic:from-classic-button-bg theme-classic:to-classic-button-bg theme-classic:!text-[#041428] text-white p-4 sm:p-6">
+        <div 
+          className="p-4 sm:p-6"
+          style={{
+            background: theme === 'classic' 
+              ? 'linear-gradient(to right, #f5cf0d, #f5cf0d)' 
+              : theme === 'dark'
+              ? 'linear-gradient(to right, #1d4ed8, #7c3aed)'
+              : 'linear-gradient(to right, #2563eb, #9333ea)',
+            color: theme === 'classic' ? '#041428' : '#ffffff'
+          }}
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-xl sm:text-2xl font-bold">
               {language === 'en' ? 'About Project Delfos' : 'Sobre o Projeto Delfos'}
@@ -451,17 +474,40 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200 dark:border-gray-700 theme-classic:border-white/20 bg-gray-50 dark:bg-gray-800 theme-classic:!bg-[#05182d]">
+        <div 
+          className="border-b"
+          style={{
+            backgroundColor: theme === 'classic' ? '#05182d' : theme === 'dark' ? '#1f2937' : '#f9fafb',
+            borderColor: theme === 'classic' ? 'rgba(255,255,255,0.2)' : theme === 'dark' ? '#374151' : '#e5e7eb'
+          }}
+        >
           <div className="flex overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
-                  activeTab === tab.id
-                    ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400 theme-classic:border-classic-button-bg theme-classic:!text-white bg-white dark:bg-gray-900 theme-classic:!bg-[#041428]'
-                    : 'text-gray-600 dark:text-gray-400 theme-classic:!text-gray-200 hover:text-gray-900 dark:hover:text-gray-200 theme-classic:hover:!text-white'
-                }`}
+                className="flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2"
+                style={{
+                  backgroundColor: activeTab === tab.id 
+                    ? (theme === 'classic' ? '#041428' : theme === 'dark' ? '#111827' : '#ffffff')
+                    : 'transparent',
+                  color: activeTab === tab.id
+                    ? (theme === 'classic' ? '#ffffff' : theme === 'dark' ? '#60a5fa' : '#2563eb')
+                    : (theme === 'classic' ? '#d1d5db' : theme === 'dark' ? '#9ca3af' : '#6b7280'),
+                  borderBottomColor: activeTab === tab.id
+                    ? (theme === 'classic' ? '#f5cf0d' : '#3b82f6')
+                    : 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.color = theme === 'classic' ? '#ffffff' : theme === 'dark' ? '#d1d5db' : '#111827';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.color = theme === 'classic' ? '#d1d5db' : theme === 'dark' ? '#9ca3af' : '#6b7280';
+                  }
+                }}
               >
                 <span className="text-lg">{tab.icon}</span>
                 {tab.label}
@@ -471,12 +517,23 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto text-gray-800 dark:text-gray-200 theme-classic:!text-white">
+        <div 
+          className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto"
+          style={{
+            color: theme === 'classic' ? '#ffffff' : theme === 'dark' ? '#e5e7eb' : '#1f2937'
+          }}
+        >
           {renderTabContent()}
         </div>
 
         {/* Footer */}
-        <div className="border-t border-gray-200 dark:border-gray-700 theme-classic:border-white/20 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 theme-classic:!bg-[#05182d]">
+        <div 
+          className="border-t p-4 sm:p-6"
+          style={{
+            backgroundColor: theme === 'classic' ? '#05182d' : theme === 'dark' ? '#1f2937' : '#f9fafb',
+            borderColor: theme === 'classic' ? 'rgba(255,255,255,0.2)' : theme === 'dark' ? '#374151' : '#e5e7eb'
+          }}
+        >
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-sm text-secondary text-center sm:text-left">
               {language === 'en' 
