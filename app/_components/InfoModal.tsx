@@ -86,18 +86,27 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
               ) : (
                 <>
                   <p>
-                    Segundo a mitologia grega, <strong>Apolo matou a dragoa Python</strong>, guardiã do santuário de Gaia, 
-                    que tentara impedir seu nascimento. Do corpo em decomposição de Python, sob Delfos, 
-                    emanavam vapores que induziam visões nas sacerdotisas, permitindo que profetizassem.
+                    Segundo a mitologia grega, no centro do mundo — em Delfos — existia um santuário dedicado à deusa Gaia, Mãe-Terra. 
+                    Ali vivia Python, uma serpente gigantesca, ou dragão, que guardava o <em>omphalos</em>, a pedra do "umbigo do mundo". 
+                    Era um ser ctônico, ligado às forças profundas e úmidas da terra, oposto aos deuses olímpicos do céu.
                   </p>
                   <p>
-                    Antigamente, <strong>Python era fonte de previsões sobre o futuro</strong> — hoje, 
-                    usamos o poder da linguagem Python para programar e, com dados e inteligência artificial, 
-                    ajudar você a descobrir seu próprio destino.
+                    Quando o deus Apolo, símbolo da luz, da razão e da harmonia, buscava um lugar para fundar seu templo, encontrou a serpente. 
+                    Em combate, matou Python com suas flechas e tomou o oráculo para si. O sangue da criatura penetrou o solo, e dos vapores 
+                    que emanaram de seu corpo nasceu a tradição profética de Delfos — as pitonisas, sacerdotisas que inalavam os gases sagrados 
+                    e viam o futuro.
                   </p>
                   <p>
-                    <strong>Assim como o Oráculo de Delfos guiava os antigos, o Projeto Delfos busca orientar 
-                    seu caminho profissional por meio do autoconhecimento.</strong>
+                    Esse mito não conta uma batalha física, mas uma passagem de eras: o triunfo da ordem solar apolínea sobre os poderes sombrios 
+                    e telúricos da antiga religião da Terra. O oráculo, agora sob Apolo, tornou-se o lugar do autoconhecimento e da verdade divina, 
+                    inscrito com as frases <strong>ΓΝΩΘΙ ΣΑΥΤΟΝ</strong> (Conhece-te a ti mesmo), <strong>ΜΗΔΕΝ ΑΓΑΝ</strong> (Nada em excesso) 
+                    na parte de baixo do pedimento e o misterioso "E" de Delfos na parte superior, fazendo assim um triângulo.
+                  </p>
+                  <p>
+                    <strong>O Projeto Delfos, assim como Apolo, que após derrotar Python não destruiu seu poder, mas o transformou na força vital 
+                    do oráculo de Delfos — um centro de sabedoria e revelação — pretende utilizar a programação (Python), para cumprir o mesmo 
+                    propósito: canalizar o conhecimento oculto dentro de cada pessoa, revelando, por meio da razão e da análise, seu próprio 
+                    destino profissional, seu caminho.</strong>
                   </p>
                 </>
               )}
@@ -343,7 +352,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                     <th className="p-3 text-left text-primary font-semibold sticky left-0 bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/10 min-w-[180px]">
                       {language === 'en' ? 'Profession' : 'Profissão'}
                     </th>
-                    {aptitudes.slice(0, 6).map((apt) => (
+                    {aptitudes.map((apt) => (
                       <th key={apt.id} className="p-2 text-center text-primary font-semibold text-xs min-w-[80px]">
                         {apt.name}
                       </th>
@@ -351,7 +360,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {professions.slice(0, 10).map((prof, idx) => (
+                  {professions.map((prof, idx) => (
                     <tr
                       key={prof.id}
                       className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 hover:bg-gray-50 dark:hover:bg-gray-800/50 theme-classic:hover:bg-white/5 ${
@@ -361,12 +370,12 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                       <td className="p-3 text-secondary font-medium sticky left-0 bg-inherit">
                         {prof.name}
                       </td>
-                      {aptitudes.slice(0, 6).map((apt) => {
+                      {aptitudes.map((apt) => {
                         const requirement = prof.req[apt.id] || 0;
                         const intensity = requirement > 0.7 ? 'high' : requirement > 0.4 ? 'medium' : 'low';
                         return (
                           <td key={apt.id} className="p-2 text-center">
-                            <span className={`inline-block w-12 h-6 rounded text-xs font-mono font-bold flex items-center justify-center ${
+                            <span className={`flex w-12 h-6 rounded text-xs font-mono font-bold items-center justify-center ${
                               intensity === 'high' 
                                 ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' 
                                 : intensity === 'medium'
