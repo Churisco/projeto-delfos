@@ -147,7 +147,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600">
+              <div 
+                className="p-4 rounded-lg border"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#0a3d29' : theme === 'dark' ? 'rgba(6, 78, 59, 0.3)' : 'rgb(240, 253, 244)',
+                  borderColor: theme === 'classic' ? '#16a34a' : theme === 'dark' ? 'rgb(6, 78, 59)' : 'rgb(187, 247, 208)'
+                }}
+              >
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -177,7 +183,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 </div>
               </div>
 
-              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600">
+              <div 
+                className="p-4 rounded-lg border"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#4a3506' : theme === 'dark' ? 'rgba(133, 77, 14, 0.3)' : 'rgb(254, 252, 232)',
+                  borderColor: theme === 'classic' ? '#ca8a04' : theme === 'dark' ? 'rgb(133, 77, 14)' : 'rgb(253, 230, 138)'
+                }}
+              >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚙️</span>
                   <h4 className="font-semibold text-primary">
@@ -209,7 +221,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 </ul>
               </div>
 
-              <div className="bg-purple-50 dark:bg-purple-950/30 theme-classic:!bg-purple-900/60 p-4 rounded-lg border border-purple-200 dark:border-purple-800 theme-classic:!border-purple-600">
+              <div 
+                className="p-4 rounded-lg border"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#2d1b4e' : theme === 'dark' ? 'rgba(88, 28, 135, 0.3)' : 'rgb(250, 245, 255)',
+                  borderColor: theme === 'classic' ? '#7c3aed' : theme === 'dark' ? 'rgb(88, 28, 135)' : 'rgb(233, 213, 255)'
+                }}
+              >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🔍</span>
                   <h4 className="font-semibold text-primary">
@@ -280,21 +298,39 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-red-50 dark:bg-red-950/30 theme-classic:!bg-red-900/60 p-4 rounded-lg border border-red-200 dark:border-red-800 theme-classic:!border-red-600 text-center">
+                <div 
+                  className="p-4 rounded-lg border text-center"
+                  style={{
+                    backgroundColor: theme === 'classic' ? '#4a1515' : theme === 'dark' ? 'rgba(127, 29, 29, 0.3)' : 'rgb(254, 242, 242)',
+                    borderColor: theme === 'classic' ? '#dc2626' : theme === 'dark' ? 'rgb(127, 29, 29)' : 'rgb(254, 202, 202)'
+                  }}
+                >
                   <div className="text-2xl mb-2">📉</div>
                   <h5 className="font-semibold text-primary mb-2">0-50%</h5>
                   <p className="text-xs text-secondary">
                     {language === 'en' ? 'Low compatibility. Consider developing related skills.' : 'Baixa compatibilidade. Considere desenvolver habilidades relacionadas.'}
                   </p>
                 </div>
-                <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600 text-center">
+                <div 
+                  className="p-4 rounded-lg border text-center"
+                  style={{
+                    backgroundColor: theme === 'classic' ? '#4a3506' : theme === 'dark' ? 'rgba(133, 77, 14, 0.3)' : 'rgb(254, 252, 232)',
+                    borderColor: theme === 'classic' ? '#ca8a04' : theme === 'dark' ? 'rgb(133, 77, 14)' : 'rgb(253, 230, 138)'
+                  }}
+                >
                   <div className="text-2xl mb-2">📊</div>
                   <h5 className="font-semibold text-primary mb-2">51-75%</h5>
                   <p className="text-xs text-secondary">
                     {language === 'en' ? 'Good match. You have many of the required aptitudes.' : 'Boa correspondência. Você possui muitas das aptidões necessárias.'}
                   </p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600 text-center">
+                <div 
+                  className="p-4 rounded-lg border text-center"
+                  style={{
+                    backgroundColor: theme === 'classic' ? '#0a3d29' : theme === 'dark' ? 'rgba(6, 78, 59, 0.3)' : 'rgb(240, 253, 244)',
+                    borderColor: theme === 'classic' ? '#16a34a' : theme === 'dark' ? 'rgb(6, 78, 59)' : 'rgb(187, 247, 208)'
+                  }}
+                >
                   <div className="text-2xl mb-2">📈</div>
                   <h5 className="font-semibold text-primary mb-2">76-100%</h5>
                   <p className="text-xs text-secondary">
@@ -382,13 +418,25 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                         const intensity = requirement > 0.7 ? 'high' : requirement > 0.4 ? 'medium' : 'low';
                         return (
                           <td key={apt.id} className="p-2 text-center">
-                            <span className={`flex w-12 h-6 rounded text-xs font-mono font-bold items-center justify-center ${
-                              intensity === 'high' 
-                                ? 'bg-red-100 dark:bg-red-900/30 theme-classic:!bg-red-800/70 text-red-700 dark:text-red-300 theme-classic:!text-red-50' 
-                                : intensity === 'medium'
-                                ? 'bg-yellow-100 dark:bg-yellow-900/30 theme-classic:!bg-yellow-800/70 text-yellow-700 dark:text-yellow-300 theme-classic:!text-yellow-50'
-                                : 'bg-green-100 dark:bg-green-900/30 theme-classic:!bg-green-800/70 text-green-700 dark:text-green-300 theme-classic:!text-green-50'
-                            }`}>
+                            <span 
+                              className="flex w-12 h-6 rounded text-xs font-mono font-bold items-center justify-center"
+                              style={{
+                                backgroundColor: theme === 'classic' 
+                                  ? (intensity === 'high' ? '#7f1d1d' : intensity === 'medium' ? '#713f12' : '#14532d')
+                                  : intensity === 'high' 
+                                  ? (theme === 'dark' ? 'rgba(127, 29, 29, 0.3)' : 'rgb(254, 226, 226)')
+                                  : intensity === 'medium'
+                                  ? (theme === 'dark' ? 'rgba(113, 63, 18, 0.3)' : 'rgb(254, 249, 195)')
+                                  : (theme === 'dark' ? 'rgba(20, 83, 45, 0.3)' : 'rgb(220, 252, 231)'),
+                                color: theme === 'classic' 
+                                  ? (intensity === 'high' ? '#fca5a5' : intensity === 'medium' ? '#fde047' : '#86efac')
+                                  : intensity === 'high'
+                                  ? (theme === 'dark' ? '#fca5a5' : '#b91c1c')
+                                  : intensity === 'medium'
+                                  ? (theme === 'dark' ? '#fde047' : '#a16207')
+                                  : (theme === 'dark' ? '#86efac' : '#15803d')
+                              }}
+                            >
                               {requirement.toFixed(1)}
                             </span>
                           </td>
@@ -401,20 +449,53 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-3 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600 text-center">
-                <div className="font-semibold text-green-700 dark:text-green-300 theme-classic:!text-green-100 mb-1">0.0 - 0.4</div>
+              <div 
+                className="p-3 rounded-lg border text-center"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#0a3d29' : theme === 'dark' ? 'rgba(6, 78, 59, 0.3)' : 'rgb(240, 253, 244)',
+                  borderColor: theme === 'classic' ? '#16a34a' : theme === 'dark' ? 'rgb(6, 78, 59)' : 'rgb(187, 247, 208)'
+                }}
+              >
+                <div 
+                  className="font-semibold mb-1"
+                  style={{ color: theme === 'classic' ? '#86efac' : theme === 'dark' ? '#86efac' : '#15803d' }}
+                >
+                  0.0 - 0.4
+                </div>
                 <div className="text-xs text-secondary">
                   {language === 'en' ? 'Basic Level' : 'Nível Básico'}
                 </div>
               </div>
-              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-3 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600 text-center">
-                <div className="font-semibold text-yellow-700 dark:text-yellow-300 theme-classic:!text-yellow-100 mb-1">0.4 - 0.7</div>
+              <div 
+                className="p-3 rounded-lg border text-center"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#4a3506' : theme === 'dark' ? 'rgba(133, 77, 14, 0.3)' : 'rgb(254, 252, 232)',
+                  borderColor: theme === 'classic' ? '#ca8a04' : theme === 'dark' ? 'rgb(133, 77, 14)' : 'rgb(253, 230, 138)'
+                }}
+              >
+                <div 
+                  className="font-semibold mb-1"
+                  style={{ color: theme === 'classic' ? '#fde047' : theme === 'dark' ? '#fde047' : '#a16207' }}
+                >
+                  0.4 - 0.7
+                </div>
                 <div className="text-xs text-secondary">
                   {language === 'en' ? 'Moderate Level' : 'Nível Moderado'}
                 </div>
               </div>
-              <div className="bg-red-50 dark:bg-red-950/30 theme-classic:!bg-red-900/60 p-3 rounded-lg border border-red-200 dark:border-red-800 theme-classic:!border-red-600 text-center">
-                <div className="font-semibold text-red-700 dark:text-red-300 theme-classic:!text-red-100 mb-1">0.7 - 1.0</div>
+              <div 
+                className="p-3 rounded-lg border text-center"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#4a1515' : theme === 'dark' ? 'rgba(127, 29, 29, 0.3)' : 'rgb(254, 242, 242)',
+                  borderColor: theme === 'classic' ? '#dc2626' : theme === 'dark' ? 'rgb(127, 29, 29)' : 'rgb(254, 202, 202)'
+                }}
+              >
+                <div 
+                  className="font-semibold mb-1"
+                  style={{ color: theme === 'classic' ? '#fca5a5' : theme === 'dark' ? '#fca5a5' : '#b91c1c' }}
+                >
+                  0.7 - 1.0
+                </div>
                 <div className="text-xs text-secondary">
                   {language === 'en' ? 'Advanced Level' : 'Nível Avançado'}
                 </div>
