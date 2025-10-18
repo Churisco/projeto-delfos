@@ -29,15 +29,32 @@
   }
   
   body.theme-classic {
-    background-color: #051d3b !important;
-    color: #f5cf0d !important;
+    background-color: #061d3a !important;
+    color: #e5e7eb !important;
   }
   
   /* Forçar cores dos temas */
   .theme-dark .intro-bg { background-color: #000000 !important; }
-  .theme-classic .intro-bg { background-color: #051d3b !important; }
+  .theme-classic .intro-bg { background-color: #061d3a !important; }
   .theme-dark .intro-title { color: #f3f4f6 !important; }
-  .theme-classic .intro-title { color: #f5cf0d !important; }
+  .theme-classic .intro-title { color: #e5e7eb !important; }
+  
+  /* Modal específico para tema clássico */
+  .theme-classic .modal-bg {
+    background-color: #0a2540 !important;
+  }
+  
+  .theme-classic .modal-content {
+    background-color: #0d2d4a !important;
+  }
+  
+  .theme-classic .modal-text {
+    color: #e5e7eb !important;
+  }
+  
+  .theme-classic .modal-text-secondary {
+    color: #d1d5db !important;
+  }
 }
 
 /* stylelint-disable */
@@ -47,8 +64,8 @@
   .theme-light .text-secondary { @apply text-gray-600; }
   .theme-dark .text-primary { @apply text-gray-100; }
   .theme-dark .text-secondary { @apply text-gray-400; }
-  .theme-classic .text-primary { @apply text-classic-text; }
-  .theme-classic .text-secondary { @apply text-classic-secondary; }
+  .theme-classic .text-primary { @apply text-white; }
+  .theme-classic .text-secondary { @apply text-gray-100; }
 
   .theme-light .bg-card { @apply bg-white; }
   .theme-dark .bg-card { @apply bg-[#1d2024]; }
@@ -57,6 +74,23 @@
   .theme-light .border-card { @apply border-gray-200; }
   .theme-dark .border-card { @apply border-gray-700; }
   .theme-classic .border-card { @apply border-classic-card-border; }
+  
+  /* Estilo especial para cards dentro de modais no tema clássico */
+  .theme-classic .prose {
+    color: #ffffff !important;
+  }
+  
+  .theme-classic .prose strong {
+    color: #ffffff !important;
+  }
+  
+  .theme-classic .prose p {
+    color: #f3f4f6 !important;
+  }
+  
+  .theme-classic .prose em {
+    color: #f9fafb !important;
+  }
 
   .course-suggestion-card { @apply p-3 sm:p-4 rounded-lg transition-transform duration-200; }
   .course-suggestion-card:hover { @apply -translate-y-0.5; }
@@ -84,8 +118,7 @@
   .theme-light .radio-option-input:checked + .radio-option-label { @apply bg-blue-500 border-blue-600 text-white font-medium; }
   .theme-dark .radio-option-label { @apply border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-blue-400; }
   .theme-dark .radio-option-input:checked + .radio-option-label { @apply bg-blue-400 border-blue-500 text-gray-900 font-medium; }
-  /* Fix: use existing custom color key card-border instead of non-existent classic-border */
-  .theme-classic .radio-option-label { @apply text-gray-200 hover:bg-white/10; border:1px solid #f5cf0d; }
+  .theme-classic .radio-option-label { @apply text-gray-200 hover:bg-white/10; border:1px solid rgba(245,207,13,0.3); }
   .theme-classic .radio-option-input:checked + .radio-option-label { @apply bg-classic-button-bg border-opacity-90 text-classic-button-text font-medium; }
 
   /* Responsive utilities */

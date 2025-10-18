@@ -79,7 +79,7 @@ export default function TestSection({ answers, setAnswers, onSubmit, onBackToInt
         ))}
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center mt-8 sm:mt-10 pt-4 border-t border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 gap-3 sm:gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center mt-8 sm:mt-10 pt-4 border-t border-gray-200 dark:border-gray-700 theme-classic:border-gray-600 gap-3 sm:gap-4">
         <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={() => {

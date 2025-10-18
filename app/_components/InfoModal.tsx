@@ -140,7 +140,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:bg-green-100/20 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:border-green-300/50">
+              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -170,7 +170,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 </div>
               </div>
 
-              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:bg-yellow-100/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:border-yellow-300/50">
+              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚙️</span>
                   <h4 className="font-semibold text-primary">
@@ -202,7 +202,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 </ul>
               </div>
 
-              <div className="bg-purple-50 dark:bg-purple-950/30 theme-classic:bg-purple-100/20 p-4 rounded-lg border border-purple-200 dark:border-purple-800 theme-classic:border-purple-300/50">
+              <div className="bg-purple-50 dark:bg-purple-950/30 theme-classic:!bg-purple-900/60 p-4 rounded-lg border border-purple-200 dark:border-purple-800 theme-classic:!border-purple-600">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🔍</span>
                   <h4 className="font-semibold text-primary">
@@ -273,21 +273,21 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-red-50 dark:bg-red-950/30 theme-classic:bg-red-100/20 p-4 rounded-lg border border-red-200 dark:border-red-800 theme-classic:border-red-300/50 text-center">
+                <div className="bg-red-50 dark:bg-red-950/30 theme-classic:!bg-red-900/60 p-4 rounded-lg border border-red-200 dark:border-red-800 theme-classic:!border-red-600 text-center">
                   <div className="text-2xl mb-2">📉</div>
                   <h5 className="font-semibold text-primary mb-2">0-50%</h5>
                   <p className="text-xs text-secondary">
                     {language === 'en' ? 'Low compatibility. Consider developing related skills.' : 'Baixa compatibilidade. Considere desenvolver habilidades relacionadas.'}
                   </p>
                 </div>
-                <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:bg-yellow-100/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:border-yellow-300/50 text-center">
+                <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600 text-center">
                   <div className="text-2xl mb-2">📊</div>
                   <h5 className="font-semibold text-primary mb-2">51-75%</h5>
                   <p className="text-xs text-secondary">
                     {language === 'en' ? 'Good match. You have many of the required aptitudes.' : 'Boa correspondência. Você possui muitas das aptidões necessárias.'}
                   </p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/30 theme-classic:bg-green-100/20 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:border-green-300/50 text-center">
+                <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-4 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600 text-center">
                   <div className="text-2xl mb-2">📈</div>
                   <h5 className="font-semibold text-primary mb-2">76-100%</h5>
                   <p className="text-xs text-secondary">
@@ -348,12 +348,12 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse rounded-lg overflow-hidden text-sm">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/10">
-                    <th className="p-3 text-left text-primary font-semibold sticky left-0 bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/10 min-w-[180px]">
+                  <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:!bg-[#05182d]">
+                    <th className="p-3 text-left font-semibold sticky left-0 bg-gray-100 dark:bg-gray-800 theme-classic:!bg-[#05182d] min-w-[180px] text-gray-800 dark:text-gray-100 theme-classic:!text-white">
                       {language === 'en' ? 'Profession' : 'Profissão'}
                     </th>
                     {aptitudes.map((apt) => (
-                      <th key={apt.id} className="p-2 text-center text-primary font-semibold text-xs min-w-[80px]">
+                      <th key={apt.id} className="p-2 text-center font-semibold text-xs min-w-[80px] text-gray-800 dark:text-gray-100 theme-classic:!text-white">
                         {apt.name}
                       </th>
                     ))}
@@ -363,11 +363,11 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                   {professions.map((prof, idx) => (
                     <tr
                       key={prof.id}
-                      className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 hover:bg-gray-50 dark:hover:bg-gray-800/50 theme-classic:hover:bg-white/5 ${
-                        idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:bg-white/5" : ""
+                      className={`border-b border-gray-200 dark:border-gray-700 theme-classic:!border-white/20 hover:bg-gray-50 dark:hover:bg-gray-800/50 theme-classic:hover:!bg-white/10 ${
+                        idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:!bg-white/5" : "theme-classic:!bg-transparent"
                       }`}
                     >
-                      <td className="p-3 text-secondary font-medium sticky left-0 bg-inherit">
+                      <td className="p-3 font-medium sticky left-0 bg-inherit text-gray-700 dark:text-gray-300 theme-classic:!text-white">
                         {prof.name}
                       </td>
                       {aptitudes.map((apt) => {
@@ -377,10 +377,10 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                           <td key={apt.id} className="p-2 text-center">
                             <span className={`flex w-12 h-6 rounded text-xs font-mono font-bold items-center justify-center ${
                               intensity === 'high' 
-                                ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' 
+                                ? 'bg-red-100 dark:bg-red-900/30 theme-classic:!bg-red-800/70 text-red-700 dark:text-red-300 theme-classic:!text-red-50' 
                                 : intensity === 'medium'
-                                ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
-                                : 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                ? 'bg-yellow-100 dark:bg-yellow-900/30 theme-classic:!bg-yellow-800/70 text-yellow-700 dark:text-yellow-300 theme-classic:!text-yellow-50'
+                                : 'bg-green-100 dark:bg-green-900/30 theme-classic:!bg-green-800/70 text-green-700 dark:text-green-300 theme-classic:!text-green-50'
                             }`}>
                               {requirement.toFixed(1)}
                             </span>
@@ -394,20 +394,20 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:bg-green-100/20 p-3 rounded-lg border border-green-200 dark:border-green-800 theme-classic:border-green-300/50 text-center">
-                <div className="font-semibold text-green-700 dark:text-green-300 mb-1">0.0 - 0.4</div>
+              <div className="bg-green-50 dark:bg-green-950/30 theme-classic:!bg-green-900/60 p-3 rounded-lg border border-green-200 dark:border-green-800 theme-classic:!border-green-600 text-center">
+                <div className="font-semibold text-green-700 dark:text-green-300 theme-classic:!text-green-100 mb-1">0.0 - 0.4</div>
                 <div className="text-xs text-secondary">
                   {language === 'en' ? 'Basic Level' : 'Nível Básico'}
                 </div>
               </div>
-              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:bg-yellow-100/20 p-3 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:border-yellow-300/50 text-center">
-                <div className="font-semibold text-yellow-700 dark:text-yellow-300 mb-1">0.4 - 0.7</div>
+              <div className="bg-yellow-50 dark:bg-yellow-950/30 theme-classic:!bg-yellow-900/60 p-3 rounded-lg border border-yellow-200 dark:border-yellow-800 theme-classic:!border-yellow-600 text-center">
+                <div className="font-semibold text-yellow-700 dark:text-yellow-300 theme-classic:!text-yellow-100 mb-1">0.4 - 0.7</div>
                 <div className="text-xs text-secondary">
-                  {language === 'en' ? 'Intermediate Level' : 'Nível Intermediário'}
+                  {language === 'en' ? 'Moderate Level' : 'Nível Moderado'}
                 </div>
               </div>
-              <div className="bg-red-50 dark:bg-red-950/30 theme-classic:bg-red-100/20 p-3 rounded-lg border border-red-200 dark:border-red-800 theme-classic:border-red-300/50 text-center">
-                <div className="font-semibold text-red-700 dark:text-red-300 mb-1">0.7 - 1.0</div>
+              <div className="bg-red-50 dark:bg-red-950/30 theme-classic:!bg-red-900/60 p-3 rounded-lg border border-red-200 dark:border-red-800 theme-classic:!border-red-600 text-center">
+                <div className="font-semibold text-red-700 dark:text-red-300 theme-classic:!text-red-100 mb-1">0.7 - 1.0</div>
                 <div className="text-xs text-secondary">
                   {language === 'en' ? 'Advanced Level' : 'Nível Avançado'}
                 </div>
@@ -433,9 +433,9 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white dark:bg-gray-900 theme-classic:bg-classic-bg w-full max-w-6xl max-h-[90vh] rounded-lg shadow-2xl overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 w-full max-w-6xl max-h-[90vh] rounded-lg shadow-2xl overflow-hidden theme-classic:!bg-[#041428]">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 theme-classic:from-classic-button-bg theme-classic:to-classic-button-bg text-white p-4 sm:p-6">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 theme-classic:from-classic-button-bg theme-classic:to-classic-button-bg theme-classic:!text-[#041428] text-white p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl sm:text-2xl font-bold">
               {language === 'en' ? 'About Project Delfos' : 'Sobre o Projeto Delfos'}
@@ -451,7 +451,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 bg-gray-50 dark:bg-gray-800 theme-classic:bg-white/5">
+        <div className="border-b border-gray-200 dark:border-gray-700 theme-classic:border-white/20 bg-gray-50 dark:bg-gray-800 theme-classic:!bg-[#05182d]">
           <div className="flex overflow-x-auto">
             {tabs.map((tab) => (
               <button
@@ -459,8 +459,8 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400 theme-classic:text-blue-700 bg-white dark:bg-gray-900 theme-classic:bg-classic-bg'
-                    : 'text-gray-600 dark:text-gray-400 theme-classic:text-classic-text/70 hover:text-gray-900 dark:hover:text-gray-200 theme-classic:hover:text-classic-text'
+                    ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400 theme-classic:border-classic-button-bg theme-classic:!text-white bg-white dark:bg-gray-900 theme-classic:!bg-[#041428]'
+                    : 'text-gray-600 dark:text-gray-400 theme-classic:!text-gray-200 hover:text-gray-900 dark:hover:text-gray-200 theme-classic:hover:!text-white'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
@@ -471,12 +471,12 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto">
+        <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto text-gray-800 dark:text-gray-200 theme-classic:!text-white">
           {renderTabContent()}
         </div>
 
         {/* Footer */}
-        <div className="border-t border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 theme-classic:bg-white/5">
+        <div className="border-t border-gray-200 dark:border-gray-700 theme-classic:border-white/20 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 theme-classic:!bg-[#05182d]">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-sm text-secondary text-center sm:text-left">
               {language === 'en' 

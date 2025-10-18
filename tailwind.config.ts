@@ -22,14 +22,14 @@ const config: Config = {
       },
       colors: {
         classic: {
-          background: "#051d3b",
-            text: "#f5cf0d",
+          background: "#041c3c",
+            text: "#e5e7eb",
             primary: "#f5cf0d",
-            secondary: "#e0e0e0",
-            "card-bg": "rgba(245,207,13,0.1)",
-            "card-border": "#f5cf0d",
+            secondary: "#9ca3af",
+            "card-bg": "rgba(255,255,255,0.05)",
+            "card-border": "rgba(245,207,13,0.3)",
             "button-bg": "#f5cf0d",
-            "button-text": "#051d3b"
+            "button-text": "#041c3c"
         }
       },
       spacing: {

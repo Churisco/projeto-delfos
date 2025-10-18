@@ -45,7 +45,7 @@ export default function ThemeSwitcher() {
             theme === t.id
               ? "bg-blue-500 text-white dark:bg-blue-400 dark:text-black theme-classic:bg-classic-card-bg"
               : "bg-transparent text-secondary"
-          } theme-light:border-gray-300 theme-dark:border-gray-600 theme-classic:border-classic-text`}
+          } theme-light:border-gray-300 theme-dark:border-gray-600 theme-classic:border-gray-600`}
           onClick={() => {
             trackEvent.themeChanged(t.id);
             setTheme(t.id);

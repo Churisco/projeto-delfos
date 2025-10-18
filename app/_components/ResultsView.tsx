@@ -140,14 +140,14 @@ export default function ResultsView({ results, userAnswers, onRestart }: Results
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse rounded-lg overflow-hidden text-sm min-w-[280px]">
                     <thead>
-                      <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/10">
-                        <th className="p-2 text-left text-primary font-semibold text-xs w-12">
+                      <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/20">
+                        <th className="p-2 text-left font-semibold text-xs w-12 text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                           #
                         </th>
-                        <th className="p-2 text-left text-primary font-semibold text-xs">
+                        <th className="p-2 text-left font-semibold text-xs text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                           {language === 'en' ? 'Aptitude' : 'Aptidão'}
                         </th>
-                        <th className="p-2 text-right text-primary font-semibold text-xs w-16">
+                        <th className="p-2 text-right font-semibold text-xs w-16 text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                           {language === 'en' ? 'Score' : 'Nota'}
                         </th>
                       </tr>
@@ -156,15 +156,15 @@ export default function ResultsView({ results, userAnswers, onRestart }: Results
                       {sortedAptitudes.slice(0, 5).map((apt, idx) => (
                         <tr
                           key={apt.id}
-                          className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 ${
-                            idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:bg-white/5" : ""
-                          } bg-green-50/50 dark:bg-green-950/10 theme-classic:bg-green-100/20`}
+                          className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-white/10 ${
+                            idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:bg-white/5" : "theme-classic:bg-transparent"
+                          }`}
                         >
-                          <td className="p-2 text-secondary text-xs font-medium w-12">
+                          <td className="p-2 text-xs font-medium w-12 text-gray-600 dark:text-gray-400 theme-classic:text-gray-300">
                             #{idx + 1}
                           </td>
-                          <td className="p-2 text-secondary text-xs">{apt.name}</td>
-                          <td className="p-2 text-right font-mono font-medium text-primary text-xs w-16">
+                          <td className="p-2 text-xs text-gray-700 dark:text-gray-300 theme-classic:text-gray-200">{apt.name}</td>
+                          <td className="p-2 text-right font-mono font-medium text-xs w-16 text-gray-800 dark:text-gray-100 theme-classic:text-white">
                             {apt.score.toFixed(3)}
                           </td>
                         </tr>
@@ -307,14 +307,14 @@ export default function ResultsView({ results, userAnswers, onRestart }: Results
           <div className="p-6 max-h-[70vh] overflow-y-auto">
             <table className="w-full border-collapse rounded-lg overflow-hidden text-sm">
               <thead>
-                <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/10">
-                  <th className="p-3 text-left text-primary font-semibold">
+                <tr className="bg-gray-100 dark:bg-gray-800 theme-classic:bg-white/20">
+                  <th className="p-3 text-left font-semibold text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                     #
                   </th>
-                  <th className="p-3 text-left text-primary font-semibold">
+                  <th className="p-3 text-left font-semibold text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                     {language === 'en' ? 'Aptitude' : 'Aptidão'}
                   </th>
-                  <th className="p-3 text-right text-primary font-semibold">
+                  <th className="p-3 text-right font-semibold text-gray-800 dark:text-gray-100 theme-classic:text-gray-100">
                     {language === 'en' ? 'Score (0-1)' : 'Pontuação (0-1)'}
                   </th>
                 </tr>
@@ -323,15 +323,15 @@ export default function ResultsView({ results, userAnswers, onRestart }: Results
                 {sortedAptitudes.map((apt, idx) => (
                   <tr
                     key={apt.id}
-                    className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 ${
-                      idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:bg-white/5" : ""
-                    } ${idx < 5 ? "bg-green-50/50 dark:bg-green-950/10 theme-classic:bg-green-100/20" : ""}`}
+                    className={`border-b border-gray-200 dark:border-gray-700 theme-classic:border-white/10 ${
+                      idx % 2 === 0 ? "bg-white/50 dark:bg-black/20 theme-classic:bg-white/5" : "theme-classic:bg-transparent"
+                    } ${idx < 5 ? "bg-green-50/50 dark:bg-green-950/10 theme-classic:bg-green-900/20" : ""}`}
                   >
-                    <td className="p-3 text-secondary font-medium">
+                    <td className="p-3 font-medium text-gray-600 dark:text-gray-400 theme-classic:text-gray-300">
                       #{idx + 1}
                     </td>
-                    <td className="p-3 text-secondary">{apt.name}</td>
-                    <td className="p-3 text-right font-mono font-medium text-primary">
+                    <td className="p-3 text-gray-700 dark:text-gray-300 theme-classic:text-gray-200">{apt.name}</td>
+                    <td className="p-3 text-right font-mono font-medium text-gray-800 dark:text-gray-100 theme-classic:text-white">
                       {apt.score.toFixed(3)}
                     </td>
                   </tr>
