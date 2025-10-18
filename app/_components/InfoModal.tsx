@@ -119,7 +119,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
               )}
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 theme-classic:bg-blue-100/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800 theme-classic:border-blue-300/50">
+            <div 
+              className="p-4 rounded-lg border"
+              style={{
+                backgroundColor: theme === 'classic' ? '#1e3a5f' : theme === 'dark' ? 'rgba(30, 58, 138, 0.3)' : 'rgb(239, 246, 255)',
+                borderColor: theme === 'classic' ? '#3b82f6' : theme === 'dark' ? 'rgb(30, 58, 138)' : 'rgb(191, 219, 254)'
+              }}
+            >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-2xl">🔮</span>
                 <h4 className="font-semibold text-primary">
@@ -256,7 +262,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-blue-50 dark:bg-blue-950/30 theme-classic:bg-blue-100/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800 theme-classic:border-blue-300/50">
+              <div 
+                className="p-4 rounded-lg border"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#1e3a5f' : theme === 'dark' ? 'rgba(30, 58, 138, 0.3)' : 'rgb(239, 246, 255)',
+                  borderColor: theme === 'classic' ? '#3b82f6' : theme === 'dark' ? 'rgb(30, 58, 138)' : 'rgb(191, 219, 254)'
+                }}
+              >
                 <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
                   <span className="text-xl">📊</span>
                   {language === 'en' ? 'Compatibility Calculation' : 'Cálculo de Compatibilidade'}
@@ -339,7 +351,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-900/30 theme-classic:bg-gray-100/20 p-4 rounded-lg border border-gray-200 dark:border-gray-700 theme-classic:border-gray-300/50">
+              <div 
+                className="p-4 rounded-lg border"
+                style={{
+                  backgroundColor: theme === 'classic' ? '#1f2937' : theme === 'dark' ? 'rgba(31, 41, 55, 0.3)' : 'rgb(249, 250, 251)',
+                  borderColor: theme === 'classic' ? '#4b5563' : theme === 'dark' ? 'rgb(55, 65, 81)' : 'rgb(229, 231, 235)'
+                }}
+              >
                 <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
                   <span className="text-xl">💡</span>
                   {language === 'en' ? 'Important Notes' : 'Observações Importantes'}
@@ -502,7 +520,13 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 theme-classic:bg-blue-100/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800 theme-classic:border-blue-300/50">
+            <div 
+              className="p-4 rounded-lg border"
+              style={{
+                backgroundColor: theme === 'classic' ? '#1e3a5f' : theme === 'dark' ? 'rgba(30, 58, 138, 0.3)' : 'rgb(239, 246, 255)',
+                borderColor: theme === 'classic' ? '#3b82f6' : theme === 'dark' ? 'rgb(30, 58, 138)' : 'rgb(191, 219, 254)'
+              }}
+            >
               <p className="text-sm text-secondary">
                 <strong>{language === 'en' ? 'Note:' : 'Nota:'}</strong>{' '}
                 {language === 'en'
