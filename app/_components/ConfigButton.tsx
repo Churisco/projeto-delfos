@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { useTheme } from "@/providers/ThemeProvider";
+import { trackEvent } from "@/lib/analytics";
 
 interface ConfigModalProps {
   isOpen: boolean;
@@ -26,25 +27,27 @@ function ConfigModal({ isOpen, onClose, anchor }: ConfigModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/50 z-50 p-4" onClick={onClose}>
       <div
-        className="absolute bg-white rounded-lg p-4 sm:p-6 w-[320px] sm:w-[380px] max-w-[90vw] shadow-xl"
-        style={anchor ? { 
-          left: Math.min(anchor.x, window.innerWidth - 340), 
+        className="bg-white dark:bg-gray-800 theme-classic:bg-classic-card-bg rounded-lg p-4 sm:p-6 
+                   w-full max-w-sm mx-auto shadow-xl"
+        style={typeof window !== 'undefined' && window.innerWidth >= 640 && anchor ? { 
+          position: 'absolute',
+          left: Math.min(anchor.x, window.innerWidth - 400), 
           top: anchor.y, 
-          transform: "translate(-100%, 0)" 
+          transform: "translate(-100%, 0)",
+          width: '380px',
+          maxWidth: 'none'
         } : { 
-          left: "50%", 
-          top: "50%", 
-          transform: "translate(-50%, -50%)" 
+          marginTop: '20vh'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Configurações</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100 theme-classic:text-classic-text">Configurações</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-xl sm:text-2xl leading-none p-1"
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 theme-classic:text-classic-secondary theme-classic:hover:text-classic-text text-xl sm:text-2xl leading-none p-1"
           >
             ×
           </button>
@@ -52,7 +55,7 @@ function ConfigModal({ isOpen, onClose, anchor }: ConfigModalProps) {
         
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 theme-classic:text-classic-text mb-2">
               Tema
             </label>
             <ThemeSwitcher />
@@ -61,24 +64,30 @@ function ConfigModal({ isOpen, onClose, anchor }: ConfigModalProps) {
           {/* Favicon switching removed as requested; official favicon set in layout */}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 theme-classic:text-classic-text mb-2">
               Idioma / Language
             </label>
             <div className="flex gap-2">
               <button
-                onClick={() => setLanguage("pt")}
+                onClick={() => {
+                  trackEvent.languageChanged("pt");
+                  setLanguage("pt");
+                }}
                 className={`px-3 py-1.5 text-sm rounded transition-colors ${language === 'pt' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
               >
                 Português
               </button>
               <button
-                onClick={() => setLanguage("en")}
+                onClick={() => {
+                  trackEvent.languageChanged("en");
+                  setLanguage("en");
+                }}
                 className={`px-3 py-1.5 text-sm rounded transition-colors ${language === 'en' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
               >
                 English
               </button>
             </div>
-            <p className="text-xs text-gray-500 mt-2 leading-relaxed">(rótulos básicos; conteúdo do questionário permanece pt-BR por enquanto)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 theme-classic:text-classic-secondary mt-2 leading-relaxed">(rótulos básicos; conteúdo do questionário permanece pt-BR por enquanto)</p>
           </div>
 
           {/* Informações da tela (só em dev) */}
@@ -114,6 +123,7 @@ export default function ConfigButton() {
         onClick={() => {
           const rect = btnRef.current?.getBoundingClientRect();
           if (rect) setAnchor({ x: rect.right, y: rect.bottom + 8 });
+          trackEvent.configOpened();
           setIsModalOpen(true);
         }}
         className="p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all duration-300 hover:scale-110 border border-gray-200/50"

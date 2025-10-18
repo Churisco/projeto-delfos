@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import ConfigButton from "./ConfigButton";
 import { useTheme } from "@/providers/ThemeProvider";
+import { trackEvent } from "@/lib/analytics";
 
 export default function IntroSection({ onStart }: { onStart: () => void }) {
   const [showTooltip, setShowTooltip] = useState(true);
@@ -57,7 +58,7 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
       <div className="absolute inset-0 flex items-center justify-center p-4 lenovo:p-6">
         <div
           ref={containerRef}
-          className="relative w-full max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-6xl 
+          className="relative w-full max-w-sm xs:max-w-lg sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 
                      lenovo:max-w-6xl 3xl:max-w-7xl
                      aspect-[4/3] sm:aspect-[5/3] md:aspect-[4/3] lenovo:aspect-[4/3]"
           onClick={(e) => {
@@ -97,6 +98,7 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
               e.stopPropagation();
               console.log("🚪 PORTA CLICADA!");
               setShowTooltip(false);
+              trackEvent.enterTemple();
               onStart();
             }}
             onMouseDown={(e) => {
@@ -108,6 +110,7 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
                 e.preventDefault();
                 e.stopPropagation();
                 setShowTooltip(false);
+                trackEvent.enterTemple();
                 onStart();
               }
             }}
@@ -119,7 +122,7 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
               "--tw-translate-y": "calc(-50% + 1px)",
             } as React.CSSProperties}
             className={`absolute transform -translate-x-1/2 -translate-y-1/2 
-                     w-6 h-12 xs:w-8 xs:h-16 sm:w-[2.75rem] sm:h-[6.75rem] 
+                     w-8 h-16 xs:w-10 xs:h-20 sm:w-[2.75rem] sm:h-[6.75rem] 
                      md:w-[3.75rem] md:h-[7.5rem] lg:w-[4.75rem] lg:h-[8.75rem]
                      lenovo:w-[4.75rem] lenovo:h-[8.75rem] 3xl:w-[5rem] 3xl:h-[9rem]
                      bg-black hover:bg-black 
@@ -141,11 +144,11 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
               className="absolute z-40"
               style={{
                 top: `calc(${doorTop}% - 18px)`,
-                left: `calc(${doorLeft}% + 50px)`,
+                left: `calc(${doorLeft}% + 40px)`,
                 transform: "translateY(-50%)",
               }}
             >
-              <div className="relative bg-black/90 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow-lg max-w-[200px] sm:max-w-none">
+              <div className="relative bg-black/90 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium shadow-lg max-w-[180px] sm:max-w-none">
                 {/* Botão X interno no canto superior direito */}
                 <button
                   onClick={() => setShowTooltip(false)}
@@ -163,7 +166,7 @@ export default function IntroSection({ onStart }: { onStart: () => void }) {
 
       {/* Título no topo */}
       <div className="absolute top-4 sm:top-8 lenovo:top-10 left-1/2 transform -translate-x-1/2 z-10 px-4 w-full">
-        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
                        lenovo:text-6xl 3xl:text-7xl
                        font-cinzel text-center text-gray-800 intro-title transition-colors duration-300
                        leading-tight">

@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import LayoutWrapper from "./_components/LayoutWrapper";
 import ScreenDetector from "./_components/ScreenDetector";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
@@ -56,6 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <LayoutWrapper>{children}</LayoutWrapper>
           <ScreenDetector />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

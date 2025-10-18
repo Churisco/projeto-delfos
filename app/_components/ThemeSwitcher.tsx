@@ -1,6 +1,7 @@
 ﻿"use client";
 import { useTheme } from "@/providers/ThemeProvider";
 import { Theme } from "@/lib/types";
+import { trackEvent } from "@/lib/analytics";
 
 const themes: { id: Theme; icon: JSX.Element; label: string }[] = [
   {
@@ -45,7 +46,10 @@ export default function ThemeSwitcher() {
               ? "bg-blue-500 text-white dark:bg-blue-400 dark:text-black theme-classic:bg-classic-card-bg"
               : "bg-transparent text-secondary"
           } theme-light:border-gray-300 theme-dark:border-gray-600 theme-classic:border-classic-text`}
-          onClick={() => setTheme(t.id)}
+          onClick={() => {
+            trackEvent.themeChanged(t.id);
+            setTheme(t.id);
+          }}
           title={`Tema ${t.label}`}
           aria-pressed={theme === t.id}
           aria-label={`Tema ${t.label}`}

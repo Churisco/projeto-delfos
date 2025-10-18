@@ -8,6 +8,7 @@ import { UserAnswers, CompatibilityResult } from "@/lib/types";
 import { calculateAptitudeScoresLocalized, calculateCompatibilityLocalized } from "@/lib/utils";
 import { loadView, saveView, clearView } from "@/lib/persistence";
 import { useTheme } from "@/providers/ThemeProvider";
+import { trackEvent } from "@/lib/analytics";
 
 type View = "intro" | "test" | "results";
 
@@ -25,7 +26,8 @@ export default function TestController() {
   }, [view, setIsIntroView]);
 
   function handleStart() {
-    console.log("� Iniciando o teste!");
+    console.log("⚡ Iniciando o teste!");
+    trackEvent.testStarted();
     // Persist view immediately to avoid remount race conditions
     saveView("test");
     setView("test");

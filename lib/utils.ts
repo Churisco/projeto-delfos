@@ -37,7 +37,7 @@ export function calculateCompatibility(scores: UserScores): CompatibilityResult[
     const compat = weight > 0 ? total / weight : 0;
     return { name: p.name, score: Math.round(compat * 100) };
   });
-  return list.sort((a,b) => b.score - a.score).slice(0,5);
+  return list.sort((a,b) => b.score - a.score);
 }
 
 // Language-aware variants (pure functions)
@@ -79,5 +79,5 @@ export function calculateCompatibilityLocalized(scores: UserScores, lang: "pt" |
     const compat = weight > 0 ? total / weight : 0;
     return { name: p.name, score: Math.round(compat * 100) };
   });
-  return list.sort((a,b) => b.score - a.score).slice(0,5);
+  return list.sort((a,b) => b.score - a.score);
 }

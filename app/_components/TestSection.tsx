@@ -3,6 +3,7 @@ import { getQuestionsByLang } from "@/lib/data";
 import { UserAnswers } from "@/lib/types";
 import { useMemo, useState } from "react";
 import { useTheme } from "@/providers/ThemeProvider";
+import { trackEvent } from "@/lib/analytics";
 
 interface TestSectionProps {
   answers: UserAnswers;
@@ -26,6 +27,7 @@ export default function TestSection({ answers, setAnswers, onSubmit, onBackToInt
 
   function setAnswer(qId: string, value: number) {
     setAnswers({ ...answers, [qId]: value });
+    trackEvent.questionAnswered(qId, page);
   }
 
   const allAnsweredPage = currentQuestions.every(q => answers[q.id] !== undefined);
@@ -80,14 +82,28 @@ export default function TestSection({ answers, setAnswers, onSubmit, onBackToInt
       <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center mt-8 sm:mt-10 pt-4 border-t border-gray-200 dark:border-gray-700 theme-classic:border-classic-text/40 gap-3 sm:gap-4">
         <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <button
-            onClick={() => (page === 0 ? onBackToIntro() : setPage(p => p - 1))}
+            onClick={() => {
+              if (page === 0) {
+                trackEvent.exitTest();
+                onBackToIntro();
+              } else {
+                trackEvent.navigateQuestions('previous', page);
+                setPage(p => p - 1);
+              }
+            }}
             className="button button-secondary flex-1 sm:w-auto"
           >
             {page === 0 ? (language === 'en' ? 'Exit' : 'Sair') : (language === 'en' ? 'Previous' : 'Anterior')}
           </button>
           {page < totalPages - 1 && (
             <button
-              onClick={() => allAnsweredPage && setPage(p => p + 1)}
+              onClick={() => {
+                if (allAnsweredPage) {
+                  trackEvent.navigateQuestions('next', page);
+                  trackEvent.pageCompleted(page, totalPages);
+                  setPage(p => p + 1);
+                }
+              }}
               disabled={!allAnsweredPage}
               className="button button-primary flex-1 sm:w-auto"
             >
@@ -99,6 +115,8 @@ export default function TestSection({ answers, setAnswers, onSubmit, onBackToInt
               onClick={() => {
                 if (!allAnsweredGlobal || isSubmitting) return;
                 setIsSubmitting(true);
+                trackEvent.testCompleted(Date.now(), questions.length); // Usar timestamp simples
+                trackEvent.pageCompleted(page, totalPages);
                 // Pequena transição visual antes de mostrar os resultados
                 setTimeout(() => {
                   onSubmit();
